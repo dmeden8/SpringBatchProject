@@ -1,0 +1,49 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'lssyliussyncer'
+	version = '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-batch")
+    compile("org.springframework:spring-web")
+    compile("org.springframework:spring-oxm")
+    compile("org.springframework:spring-jdbc")
+    compile("commons-codec:commons-codec:1.5")
+    compile('org.projectlombok:lombok:1.16.6')
+    compile("com.fasterxml.jackson.core:jackson-databind")	
+	compile("org.hsqldb:hsqldb")
+	testCompile("junit:junit")
+	compile('mysql:mysql-connector-java:5.1.35')
+	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+	
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+	
+	
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
+
+

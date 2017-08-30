@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url:  
+    username: 
+    password: 
+    
+  batch:
+    job:
+      enabled: false  
+      
+scheduler:
+   lightspeedToSylius:
+      fixedDelay: 5
+      jobActive: false 
+   syliusToLightspeed:
+      fixedDelay: 5  
+      jobActive: true 
+   syliusToShipstation:
+      fixedDelay: 5           
+      jobActive: false  
+   shipstationToSylius:
+      fixedDelay: 5  
+      jobActive: false 
+           
+lightspeed:
+   #accessToken: 
+   refreshToken: 
+   clientId: 
+   clientSecret: 
+   accountID: 
+   apiUrl: https://api.merchantos.com/API/Account/
+   tokenUrl: https://cloud.merchantos.com/oauth/access_token.php
+   sendAsCompleteState: ready_to_ship
+   paymentMethodId: 3
+   saleField:
+      employeeId: 1
+      registerId: 2
+      shopId: 1
+      shippingItemId: 15973
+      
+shipstation:
+   accessToken: 
+   apiUrl: https://ssapi.shipstation.com/    
+   #timeZone: Canada/Pacific  
+   timeZone: Canada/Mountain   
+     
+syncer:     
+  chunkSize: 100
+  pageSize: 100
+  restTimeout: 30000
+  lightspeed:
+    globalUseTimeInterval: true
+  shipstation:  
+    globalUseTimeInterval: true
